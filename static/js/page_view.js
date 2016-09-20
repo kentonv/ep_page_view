@@ -365,6 +365,11 @@ exports.aceEditEvent = function(hook, callstack, editorInfo, rep, documentAttrib
 }
 
 reDrawPageBreaks = function(){
+  // SANDSTORM EDIT: We're temporarily disabling this code as the function can trigger content
+  //   changes, especially adding of unwanted newlines.
+  //   See: https://github.com/ether/ep_page_view/issues/30
+  return;
+
   // console.log("redrawing");
   var lines = {};
   var yHeight = 922.5; // This is dirty and I feel bad for it..
