@@ -347,6 +347,12 @@ exports.aceKeyEvent = function(hook, callstack, editorInfo, rep, documentAttribu
 }
 
 exports.aceEditEvent = function(hook, callstack, editorInfo, rep, documentAttributeManager){
+  // SANDSTORM EDIT: For medium-to-large documents, this handler is EXTREMELY slow, to the point
+  //   that bashing on the keyboard will cause Etherpad to grind to a halt. But all this handler
+  //   appears to be doing is searching for computed page breaks. On Sandstorm, we've disabled
+  //   computed page breaks; see comment in reDrawPageBreaks().
+  return;
+
   // This seems a little too often to run
   // If we're not in page view mode just hide all the things
   if($('#options-pageview').is(':checked')) {}else{
